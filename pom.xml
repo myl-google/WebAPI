@@ -543,8 +543,9 @@
           <groupId>bqjdbc</groupId>
           <artifactId>bqjdbc</artifactId>
           <version>1.0</version>
+          <scope>system</scope>
           <!-- If you have it local and not in a repository <systemPath></systemPath> -->
-          <!-- <systemPath>/Users/myl/starschema/forked/starschema-bigquery-jdbc/out/artifacts/bqjdbc_jar/bqjdbc.jar</systemPath> -->
+          <systemPath>/Users/myl/starschema/forked/starschema-bigquery-jdbc/out/artifacts/bqjdbc_jar/bqjdbc.jar</systemPath>
         </dependency>
       </dependencies>
     </profile>
