@@ -494,8 +494,9 @@
     <profile>
       <id>webapi-bigquery</id>
       <properties>
+        <!--
         <datasource.driverClassName>net.starschema.clouddb.jdbc.BQDriver</datasource.driverClassName>
-        <datasource.url>jdbc:BQDriver:server-name/default-dataset?withServiceAccount=true&amp;transformQuery=false</datasource.url>
+        <datasource.url>jdbc:BQDriver:server-name?withServiceAccount=true&amp;transformQuery=false</datasource.url>
         <datasource.username>USER</datasource.username>
         <datasource.password>PASS</datasource.password>
         <datasource.dialect>bigquery</datasource.dialect>
@@ -504,8 +505,38 @@
         <flyway.datasource.url>${datasource.url}</flyway.datasource.url>
         <flyway.datasource.username>FLYWAY_USER</flyway.datasource.username>
         <flyway.datasource.password>FLYWAY_PASS</flyway.datasource.password>
+        -->
+        <!-- <flyway.locations>classpath:db/migration/sqlserver</flyway.locations> -->
+        <!--<hibernate.dialect>org.hibernate.dialect.SQLServer2012Dialect</hibernate.dialect>-->
         <flyway.locations>classpath:db/migration/postgres</flyway.locations>
         <hibernate.dialect>org.hibernate.dialect.PostgreSQL9Dialect</hibernate.dialect>
+        <!-- <hibernate.dialect>org.hibernate.dialect.SQLServerDialect</hibernate.dialect> -->
+
+<!-- temporary overrides from settings.xml -->
+        <datasource.driverClassName>net.starschema.clouddb.jdbc.BQDriver</datasource.driverClassName>
+        <datasource.url>jdbc:BQDriver:ohdsi-in-a-box/ohdsi?withServiceAccount=true&amp;transformQuery=false</datasource.url>
+        <datasource.username>759870432262-compute@developer.gserviceaccount.com</datasource.username>
+        <datasource.password>/Users/myl/ohdsi-docker/ohdsi-in-a-box.p12</datasource.password>
+        <datasource.dialect>bigquery</datasource.dialect>
+        <datasource.ohdsi.schema>ohdsi</datasource.ohdsi.schema>
+        <!--<datasource.cdm.schema>ohdsi</datasource.cdm.schema>-->
+        <flyway.enabled>false</flyway.enabled>
+        <flyway.datasource.driverClassName>${datasource.driverClassName}</flyway.datasource.driverClassName>
+        <flyway.datasource.url>jdbc:BQDriver:ohdsi-in-a-box?withServiceAccount=true&amp;transformQuery=false</flyway.datasource.url>
+        <flyway.datasource.username>759870432262-compute@developer.gserviceaccount.com</flyway.datasource.username>
+        <flyway.datasource.password>/Users/myl/ohdsi-docker/ohdsi-in-a-box.p12</flyway.datasource.password>
+        <!--<flyway.schemas>ohdsi</flyway.schemas>
+        <flyway.placeholders.ohdsiSchema>ohdsi</flyway.placeholders.ohdsiSchema> -->
+        <security.enabled>false</security.enabled>
+        <security.token.expiration>43200</security.token.expiration>
+        <security.origin>*</security.origin>
+        <security.ssl.enabled>false</security.ssl.enabled>
+        <security.oauth.callback.ui>http://localhost/atlas/#/welcome</security.oauth.callback.ui>
+        <security.oauth.callback.api>http://localhost:8080/WebAPI/user/oauth/callback</security.oauth.callback.api>
+        <security.oauth.google.apiKey></security.oauth.google.apiKey>
+        <security.oauth.google.apiSecret></security.oauth.google.apiSecret>
+        <security.oauth.facebook.apiKey></security.oauth.facebook.apiKey>
+        <security.oauth.facebook.apiSecret></security.oauth.facebook.apiSecret>
       </properties>
       <dependencies>
         <dependency>
@@ -513,6 +544,7 @@
           <artifactId>bqjdbc</artifactId>
           <version>1.0</version>
           <!-- If you have it local and not in a repository <systemPath></systemPath> -->
+          <!-- <systemPath>/Users/myl/starschema/forked/starschema-bigquery-jdbc/out/artifacts/bqjdbc_jar/bqjdbc.jar</systemPath> -->
         </dependency>
       </dependencies>
     </profile>
