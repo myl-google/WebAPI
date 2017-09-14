@@ -306,7 +306,7 @@
       <version>1.3.0-SNAPSHOT</version>
       <scope>system</scope>
       <!-- If you have it local and not in a repository <systemPath></systemPath> -->
-      <systemPath>/Users/myl/mylSqlRender/SqlRender/inst/java/SqlRender.jar</systemPath>
+      <systemPath>/Users/myl/ohdsi/SqlRender/inst/java/SqlRender.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>commons-dbutils</groupId>
@@ -553,7 +553,7 @@
           <version>1.0</version>
           <scope>system</scope>
           <!-- If you have it local and not in a repository <systemPath></systemPath> -->
-          <systemPath>/Users/myl/starschema/forked/starschema-bigquery-jdbc/out/artifacts/bqjdbc_jar/bqjdbc.jar</systemPath>
+          <systemPath>/Users/myl/ohdsi/starschema-bigquery-jdbc/out/artifacts/bqjdbc_jar/bqjdbc.jar</systemPath>
         </dependency>
       </dependencies>
     </profile>
