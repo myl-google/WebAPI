@@ -21,28 +21,30 @@
 
     <!-- Primary DataSource -->
     <!-- default sql server - TODO How about making postgres the default (e.g. in line with open source tech)? -alexfranken -->
-    <datasource.driverClassName>com.microsoft.sqlserver.jdbc.SQLServerDriver</datasource.driverClassName>
-    <datasource.url>jdbc:sqlserver://serverName;databaseName=databaseName</datasource.url>
-    <datasource.username>user</datasource.username>
-    <datasource.password>password</datasource.password>
+    <datasource.driverClassName>org.postgresql.Driver</datasource.driverClassName>
+    <datasource.url>jdbc:postgresql://127.0.0.1:5432/mac</datasource.url>
+    <datasource.username>postgres</datasource.username>
+    <datasource.password>ohdsi-password</datasource.password>
     <!--<datasource.validationQuery>SELECT 1</datasource.validationQuery>-->
-    <datasource.dialect>sql server</datasource.dialect>
-    <datasource.ohdsi.schema>dbo</datasource.ohdsi.schema>
-    <datasource.dialect.source>sql server</datasource.dialect.source>
+    <datasource.dialect>postgresql</datasource.dialect>
+    <datasource.ohdsi.schema>ohdsi</datasource.ohdsi.schema>
+    <datasource.dialect.source>postgres</datasource.dialect.source>
     <!-- DB Change Management / Migration -->
-    <flyway.datasource.driverClassName>com.microsoft.sqlserver.jdbc.SQLServerDriver</flyway.datasource.driverClassName>
-    <flyway.datasource.url>jdbc:sqlserver://serverName</flyway.datasource.url>
-    <flyway.datasource.username>userWithWritePrivs</flyway.datasource.username>
-    <flyway.datasource.password>password</flyway.datasource.password>
-    <flyway.locations>classpath:db/migration/sqlserver</flyway.locations>
+    <flyway.datasource.driverClassName>org.postgresql.Driver</flyway.datasource.driverClassName>
+    <flyway.datasource.url>jdbc:postgresql://127.0.0.1:5432/mac</flyway.datasource.url>
+    <flyway.datasource.username>postgres</flyway.datasource.username>
+    <flyway.datasource.password>ohdsi-password</flyway.datasource.password>
+    <flyway.locations>classpath:db/migration/postgresql</flyway.locations>
     <!-- Note: Schema name is case-sensitive. -->
-    <flyway.schemas>${datasource.ohdsi.schema}</flyway.schemas>
+    <flyway.schemas>ohdsi</flyway.schemas>
     <flyway.validateOnMigrate>false</flyway.validateOnMigrate>
-    <flyway.placeholders.ohdsiSchema>${datasource.ohdsi.schema}</flyway.placeholders.ohdsiSchema>		
+    <flyway.placeholders.ohdsiSchema>ohdsi</flyway.placeholders.ohdsiSchema>
     <!-- CDM properties -->
     <source.name>CDM_NAME</source.name>
     <cdm.version>5</cdm.version>
 
+    <hibernate.dialect>org.hibernate.dialect.PostgreSQL9Dialect</hibernate.dialect>
+    <spring.jpa.properties.hibernate.dialect>org.hibernate.dialect.PostgreSQL9Dialect</spring.jpa.properties.hibernate.dialect>
     <spring.batch.repository.tableprefix>${datasource.ohdsi.schema}.BATCH_</spring.batch.repository.tableprefix>
     <spring.batch.repository.isolationLevelForCreate>ISOLATION_READ_COMMITTED</spring.batch.repository.isolationLevelForCreate>
     <spring.profiles.active>default</spring.profiles.active>
@@ -437,6 +439,14 @@
       <artifactId>circe</artifactId>
       <version>1.1.1</version>
     </dependency>
+    <dependency>
+      <groupId>bqjdbc</groupId>
+      <artifactId>bqjdbc</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <!-- If you have it local and not in a repository <systemPath></systemPath> -->
+      <systemPath>/Users/myl/ohdsi/starschema-bigquery-jdbc/out/artifacts/bqjdbc_jar/bqjdbc.jar</systemPath>
+    </dependency>
   </dependencies>
   <profiles>
     <profile>
@@ -528,7 +538,7 @@
         <datasource.dialect>bigquery</datasource.dialect>
         <datasource.ohdsi.schema>ohdsi</datasource.ohdsi.schema>
         <!--<datasource.cdm.schema>ohdsi</datasource.cdm.schema>-->
-        <flyway.enabled>false</flyway.enabled>
+        <flyway.enabled>true</flyway.enabled>
         <flyway.datasource.driverClassName>${datasource.driverClassName}</flyway.datasource.driverClassName>
         <flyway.datasource.url>jdbc:BQDriver:ohdsi-in-a-box?withServiceAccount=true&amp;transformQuery=false</flyway.datasource.url>
         <flyway.datasource.username>759870432262-compute@developer.gserviceaccount.com</flyway.datasource.username>

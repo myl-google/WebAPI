@@ -1,0 +1,30 @@
+<settings>
+<profiles>
+  <profile>
+    <id>webapi-bigquery</id>
+    <properties>             
+      <datasource.driverClassName>net.starschema.clouddb.jdbc.BQDriver</datasource.driverClassName>
+      <datasource.url>jdbc:BQDriver:ohdsi-in-a-box/ohdsi?withServiceAccount=true&amp;transformQuery=false</datasource.url>
+      <datasource.username>759870432262-compute@developer.gserviceaccount.com</datasource.username>
+      <datasource.password>/Users/myl/ohdsi-docker/ohdsi-in-a-box.p12</datasource.password>
+      <datasource.dialect>bigquery</datasource.dialect>
+      <datasource.ohdsi.schema>ohdsi</datasource.ohdsi.schema>
+      <flyway.datasource.driverClassName>${datasource.driverClassName}</flyway.datasource.driverClassName>
+      <flyway.datasource.url>jdbc:BQDriver:ohdsi-in-a-box?withServiceAccount=true&amp;transformQuery=false</flyway.datasource.url>
+      <flyway.datasource.username>759870432262-compute@developer.gserviceaccount.com</flyway.datasource.username>
+      <flyway.datasource.password>/Users/myl/ohdsi-docker/ohdsi-in-a-box.p12</flyway.datasource.password>
+      <flyway.locations>classpath:db/migration/oracle</flyway.locations>
+      <security.enabled>false</security.enabled>
+      <security.token.expiration>43200</security.token.expiration>
+      <security.origin>*</security.origin>
+      <security.ssl.enabled>false</security.ssl.enabled>
+      <security.oauth.callback.ui>http://localhost/atlas/#/welcome</security.oauth.callback.ui>
+      <security.oauth.callback.api>http://localhost:8080/WebAPI/user/oauth/callback</security.oauth.callback.api>
+      <security.oauth.google.apiKey></security.oauth.google.apiKey>
+      <security.oauth.google.apiSecret></security.oauth.google.apiSecret>
+      <security.oauth.facebook.apiKey></security.oauth.facebook.apiKey>
+      <security.oauth.facebook.apiSecret></security.oauth.facebook.apiSecret>
+    </properties>
+  </profile>   
+</profiles>
+</settings>

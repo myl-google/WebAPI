@@ -1,19 +1,25 @@
 <settings>
 <profiles>
   <profile>
-    <id>webapi-bigquery</id>
+    <id>webapi-postgresql</id>
     <properties>             
-      <datasource.driverClassName>net.starschema.clouddb.jdbc.BQDriver</datasource.driverClassName>
-      <datasource.url>jdbc:BQDriver:ohdsi-in-a-box/ohdsi?withServiceAccount=true&amp;transformQuery=false</datasource.url>
-      <datasource.username>759870432262-compute@developer.gserviceaccount.com</datasource.username>
-      <datasource.password>/Users/myl/ohdsi-docker/ohdsi-in-a-box.p12</datasource.password>
-      <datasource.dialect>bigquery</datasource.dialect>
+      <datasource.driverClassName>org.postgresql.Driver</datasource.driverClassName>
+      <datasource.url>jdbc:postgresql://104.154.72.134:5432/ohdsi_database</datasource.url>
+      <datasource.username>postgres</datasource.username>
+      <datasource.password>ohdsi-password</datasource.password>
+      <datasource.dialect>postgresql</datasource.dialect>
+      <datasource.cdm.schema>cdm</datasource.cdm.schema>
       <datasource.ohdsi.schema>ohdsi</datasource.ohdsi.schema>
-      <flyway.datasource.driverClassName>${datasource.driverClassName}</flyway.datasource.driverClassName>
-      <flyway.datasource.url>jdbc:BQDriver:ohdsi-in-a-box?withServiceAccount=true&amp;transformQuery=false</flyway.datasource.url>
-      <flyway.datasource.username>759870432262-compute@developer.gserviceaccount.com</flyway.datasource.username>
-      <flyway.datasource.password>/Users/myl/ohdsi-docker/ohdsi-in-a-box.p12</flyway.datasource.password>
-      <flyway.locations>classpath:db/migration/oracle</flyway.locations>
+      <spring.jpa.properties.hibernate.default_schema>ohdsi</spring.jpa.properties.hibernate.default_schema>
+      <spring.jpa.properties.hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</spring.jpa.properties.hibernate.dialect>
+      <spring.batch.repository.tableprefix>ohdsi.BATCH_</spring.batch.repository.tableprefix>
+      <flyway.datasource.driverClassName>org.postgresql.Driver</flyway.datasource.driverClassName>
+      <flyway.datasource.url>jdbc:postgresql://104.154.72.134:5432/ohdsi_database</flyway.datasource.url>
+      <flyway.datasource.username>postgres</flyway.datasource.username>
+      <flyway.datasource.password>ohdsi-password</flyway.datasource.password>
+      <flyway.locations>classpath:db/migration/postgresql</flyway.locations>
+      <flyway.schemas>ohdsi</flyway.schemas>
+      <flyway.placeholders.ohdsiSchema>ohdsi</flyway.placeholders.ohdsiSchema>
       <security.enabled>false</security.enabled>
       <security.token.expiration>43200</security.token.expiration>
       <security.origin>*</security.origin>
