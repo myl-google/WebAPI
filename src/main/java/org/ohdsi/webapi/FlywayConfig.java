@@ -28,8 +28,8 @@ public class FlywayConfig {
     public Flyway flyway() {
       Flyway flyway = new Flyway();
       flyway.setDataSource(secondaryDataSource());
-      //return flyway;
-      return null;
+      return flyway;
+      //return null;
     }
 
 }
