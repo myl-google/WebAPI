@@ -1,0 +1,36 @@
+<settings>
+<profiles>
+  <profile>
+    <id>webapi-postgresql</id>
+    <properties>             
+      <datasource.driverClassName>org.postgresql.Driver</datasource.driverClassName>
+      <datasource.url>jdbc:postgresql://104.154.72.134:5432/ohdsi_database</datasource.url>
+      <datasource.username>postgres</datasource.username>
+      <datasource.password>ohdsi-password</datasource.password>
+      <datasource.dialect>postgresql</datasource.dialect>
+      <datasource.cdm.schema>cdm</datasource.cdm.schema>
+      <datasource.ohdsi.schema>ohdsi</datasource.ohdsi.schema>
+      <spring.jpa.properties.hibernate.default_schema>ohdsi</spring.jpa.properties.hibernate.default_schema>
+      <spring.jpa.properties.hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</spring.jpa.properties.hibernate.dialect>
+      <spring.batch.repository.tableprefix>ohdsi.BATCH_</spring.batch.repository.tableprefix>
+      <flyway.datasource.driverClassName>org.postgresql.Driver</flyway.datasource.driverClassName>
+      <flyway.datasource.url>jdbc:postgresql://104.154.72.134:5432/ohdsi_database</flyway.datasource.url>
+      <flyway.datasource.username>postgres</flyway.datasource.username>
+      <flyway.datasource.password>ohdsi-password</flyway.datasource.password>
+      <flyway.locations>classpath:db/migration/postgresql</flyway.locations>
+      <flyway.schemas>ohdsi</flyway.schemas>
+      <flyway.placeholders.ohdsiSchema>ohdsi</flyway.placeholders.ohdsiSchema>
+      <security.enabled>false</security.enabled>
+      <security.token.expiration>43200</security.token.expiration>
+      <security.origin>*</security.origin>
+      <security.ssl.enabled>false</security.ssl.enabled>
+      <security.oauth.callback.ui>http://localhost/atlas/#/welcome</security.oauth.callback.ui>
+      <security.oauth.callback.api>http://localhost:8080/WebAPI/user/oauth/callback</security.oauth.callback.api>
+      <security.oauth.google.apiKey></security.oauth.google.apiKey>
+      <security.oauth.google.apiSecret></security.oauth.google.apiSecret>
+      <security.oauth.facebook.apiKey></security.oauth.facebook.apiKey>
+      <security.oauth.facebook.apiSecret></security.oauth.facebook.apiSecret>
+    </properties>
+  </profile>   
+</profiles>
+</settings>
